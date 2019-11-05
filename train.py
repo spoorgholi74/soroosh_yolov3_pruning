@@ -104,6 +104,7 @@ if __name__ == "__main__":
         collate_fn=dataset.collate_fn
     )
 
+    print("Data loader completed!")
     optimizer = torch.optim.SGD(model.parameters(), lr=opt.lr, momentum=0.9)
 
     metrics = [

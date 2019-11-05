@@ -9,8 +9,8 @@ import time
 from utils.prune_utils import *
 
 class opt():
-    model_def = "config/yolov3-hand.cfg"
-    data_config = "config/oxfordhand.data"
+    model_def = "config/custom_yolov3.cfg"
+    data_config = "data/custom/obj.data"
     model = 'checkpoints/yolov3_ckpt.pth'
 
 

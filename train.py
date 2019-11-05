@@ -63,9 +63,10 @@ if __name__ == "__main__":
     data_config = parse_data_config(opt.data_config)
     train_path = data_config["train"]
     valid_path = data_config["valid"] #previously "valid"
-    print('data_config[names]', data_config['names'])
+    ###################
     class_names = load_classes(data_config["names"])
     print('class_names = ', class_names)
+    ###################
     print(train_path)
     print("Got the data config!")
 

@@ -205,6 +205,7 @@ if __name__ == "__main__":
             # Print class APs and mAP
             print('\nap_class = ', ap_class)
             print("AP = ", AP)
+            print("class_names", class_names)
 
             ap_table = [["Index", "Class name", "AP"]]
             for i, c in enumerate(ap_class):

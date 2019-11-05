@@ -57,16 +57,19 @@ if __name__ == "__main__":
     timestamp = datetime.datetime.fromtimestamp(time.time()).strftime('%m%d%H%M')
     os.makedirs("output", exist_ok=True)
     os.makedirs("checkpoints", exist_ok=True)
+    print("Folders created!")
 
     # Get data configuration
     data_config = parse_data_config(opt.data_config)
     train_path = data_config["train"]
-    valid_path = data_config["valid"]
+    valid_path = data_config["test"] #previously "valid"
     class_names = load_classes(data_config["names"])
+    print("Got the data config!")
 
     # Initiate model
     model = Darknet(opt.model_def).to(device)
     model.apply(weights_init_normal)
+    print("Model initilized!")
 
     # If specified we start from checkpoint
     if opt.pretrained_weights:

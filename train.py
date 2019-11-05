@@ -66,7 +66,7 @@ if __name__ == "__main__":
     ###################
     class_names = load_classes(data_config["names"])
     print('class_names = ', class_names)
-    ###################
+    ####################
     print(train_path)
     print("Got the data config!")
 
@@ -221,5 +221,7 @@ if __name__ == "__main__":
             bn_weights = gather_bn_weights(model.module_list, prune_idx)
             logger.writer.add_histogram('bn_weights/hist', bn_weights.numpy(), epoch, bins='doane')
 
-        if epoch % opt.checkpoint_interval == 0 or epoch == opt.epochs - 1:
-            torch.save(model.state_dict(), f"checkpoints/yolov3_ckpt_{epoch}_{timestamp}.pth")
+        if epoch % 5 == 0 or epoch == opt.epochs - 1:
+            model_dir = f"checkpoints/yolov3_ckpt_{epoch}_{timestamp}.pth"
+            torch.save(model.state_dict(), model_dir)
+            print("Model saved to", model_dir)

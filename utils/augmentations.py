@@ -16,7 +16,7 @@ def augment(image, boxes):
     labels = labels.tolist()
 
     print("\n*******************\n")
-    print('h=' h, '-', 'w=',w)
+    print('h=', h, '-', 'w=',w)
     print('\nlabels=',labels)
     print('box_cords=', boxes_coord)
     print("\n*******************\n")

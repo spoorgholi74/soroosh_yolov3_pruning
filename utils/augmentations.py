@@ -14,6 +14,13 @@ def augment(image, boxes):
     h, w, _ = image.shape
     labels, boxes_coord = boxes[:, 0], boxes[:, 1:]
     labels = labels.tolist()
+
+    print("\n*******************\n")
+    print('h=' h, '-', 'w=',w)
+    print('\nlabels=',labels)
+    print('box_cords=', boxes_coord)
+    print("\n*******************\n")
+
     boxes_coord = boxes_coord * h     # 得到原图尺寸下的坐标（未归一化的坐标）
     boxes_coord[:, 0] = np.clip(boxes_coord[:, 0]-boxes_coord[:, 2]/2, a_min=0, a_max=None)   # 确保x_min和y_min有效
     boxes_coord[:, 1] = np.clip(boxes_coord[:, 1]-boxes_coord[:, 3]/2, a_min=0, a_max=None)

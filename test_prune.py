@@ -8,10 +8,13 @@ from terminaltables import AsciiTable
 import time
 from utils.prune_utils import *
 
+# TODO:
+# 1- get these values as arguments
+
 class opt():
     model_def = "config/custom_yolov3.cfg"
     data_config = "data/custom/obj.data"
-    model = 'checkpoints/yolov3_ckpt.pth'
+    model = 'checkpoints/yolov3_ckpt_5_11052349.pth'
 
 
 #%%

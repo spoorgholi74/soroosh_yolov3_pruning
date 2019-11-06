@@ -80,7 +80,7 @@ def prune_and_eval(model, sorted_bn, percent=.0):
 
     return thre
 
-percent = 0.85
+percent = 0.5
 threshold = prune_and_eval(model, sorted_bn, percent)
 #%%
 def obtain_filters_mask(model, thre, CBL_idx, prune_idx):

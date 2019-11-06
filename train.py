@@ -221,7 +221,7 @@ if __name__ == "__main__":
             bn_weights = gather_bn_weights(model.module_list, prune_idx)
             logger.writer.add_histogram('bn_weights/hist', bn_weights.numpy(), epoch, bins='doane')
 
-        if epoch % 5 == 0 or epoch == opt.epochs - 1:
+        if epoch % 50 == 0 or epoch == opt.epochs - 1:
             model_dir = f"checkpoints/yolov3_ckpt_{epoch}_{timestamp}.pth"
             torch.save(model.state_dict(), model_dir)
             print("Model saved to", model_dir)

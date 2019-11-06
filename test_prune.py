@@ -32,8 +32,10 @@ obtain_num_parameters = lambda model:sum([param.nelement() for param in model.pa
 
 origin_model_metric = eval_model(model)
 origin_nparameters = obtain_num_parameters(model)
+print("num_parametes = ", origin_nparameters)
 
 CBL_idx, Conv_idx, prune_idx= parse_module_defs(model.module_defs)
+print("prune_idx = ", prune_idx)
 
 bn_weights = gather_bn_weights(model.module_list, prune_idx)
 
@@ -69,6 +71,7 @@ def prune_and_eval(model, sorted_bn, percent=.0):
         remain_num += int(mask.sum())
         bn_module.weight.data.mul_(mask)
 
+    print("calculating mAP!")
     mAP = eval_model(model_copy)[2].mean()
 
     print(f'Number of channels has been reduced from {len(sorted_bn)} to {remain_num}')
@@ -132,6 +135,7 @@ for idx, num in zip(CBL_idx, num_filters):
 #%%
 compact_model = Darknet([model.hyperparams.copy()] + compact_module_defs).to(device)
 compact_nparameters = obtain_num_parameters(compact_model)
+
 
 init_weights_from_loose_model(compact_model, pruned_model, CBL_idx, Conv_idx, CBLidx2mask)
 
